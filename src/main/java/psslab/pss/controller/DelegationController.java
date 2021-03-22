@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import psslab.pss.model.Delegation;
+import psslab.pss.model.User;
 import psslab.pss.service.DelegationService;
 
 import java.util.List;
@@ -21,9 +22,9 @@ public class DelegationController {
     }
 
     @PostMapping
-    public void registerUser(@RequestParam(name = "userId") long userid,
+    public User registerUser(@RequestParam(name = "userId") long userid,
                              @RequestBody Delegation delegation) {
-        service.addDelegation(userid, delegation);
+        return service.addDelegation(userid, delegation);
     }
 
     @DeleteMapping

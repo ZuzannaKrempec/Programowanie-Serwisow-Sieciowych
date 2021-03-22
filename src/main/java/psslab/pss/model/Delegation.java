@@ -53,4 +53,23 @@ public class Delegation {
                 !(this.transportType == TransportType.AUTO && this.km == 0);
     }
 
+    public void setTestData() {
+        this.delegationId = 0L;
+        this.description = "description";
+        this.dateTimeStart = LocalDateTime.now();
+        this.dateTimeStop = LocalDateTime.now();
+        this.travelDietAmount = 0;
+        this.breakfastNumber = 0;
+        this.dinnerNumber = 0;
+        this.supperNumber = 0;
+        this.transportType = TransportType.AUTO;
+        this.ticketPrice = 0;
+        this.autoCapacity = AutoCapacity.LESS_EQUAL_900;
+        this.km = 0;
+        this.accommodationPrice = 0;
+        this.otherTicketsPrice = 0;
+        this.otherOutlayDesc = 0;
+        this.otherOutlayPrice = 0;
+    }
+
 }

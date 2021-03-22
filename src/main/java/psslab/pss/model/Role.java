@@ -3,6 +3,7 @@ package psslab.pss.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,4 +18,9 @@ public class Role {
 
     @ManyToMany()
     private List<User> users;
+
+    public Role(String roleName) {
+        this.roleName = roleName;
+        this.users = new ArrayList<>();
+    }
 }

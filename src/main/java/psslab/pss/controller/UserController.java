@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void registerUser(@RequestBody User user) {
-        userService.addUser(user);
+    public User registerUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 
     @GetMapping
@@ -34,9 +34,9 @@ public class UserController {
     }
 
     @PutMapping
-    public void changePassword(@RequestParam(name = "userId") long userId,
+    public User changePassword(@RequestParam(name = "userId") long userId,
                                @RequestParam(name = "password") String newPassword) {
-        userService.changePassword(userId, newPassword);
+        return userService.changePassword(userId, newPassword);
     }
 
     @DeleteMapping

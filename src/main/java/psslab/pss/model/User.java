@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -49,5 +50,20 @@ public class User {
                 this.email != null &&
                 this.password != null;
 
+    }
+
+    public void setTestData() {
+        this.userId = 1L;
+        this.companyName = "companyName";
+        this.companyAddress = "companyAddress";
+        this.companyNip = "companyNip";
+        this.name = "name";
+        this.lastName = "lastName";
+        this.email = "email";
+        this.password = "password";
+        this.status = true;
+        this.registrationDate = LocalDateTime.now();
+        this.roles = new ArrayList<>();
+        this.delegations = new ArrayList<>();
     }
 }

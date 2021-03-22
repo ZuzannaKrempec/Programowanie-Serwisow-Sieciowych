@@ -28,9 +28,9 @@ public class UserService {
             throw new NullPointerException("Nie znaleziono szukanego użytkownika");
         }
     }
-    public void addUser(User user) {
+    public User addUser(User user) {
         if (user != null && user.valid()) {
-            repository.save(user);
+            return repository.save(user);
         } else {
             throw new NullPointerException("Nie podano danych o użytkowniku");
         }
@@ -40,13 +40,13 @@ public class UserService {
         return repository.findAll();
     }
 
-    public void changePassword(long userId, String newPassword) {
+    public User changePassword(long userId, String newPassword) {
         if (newPassword == null || newPassword.isEmpty()) {
             throw new NullPointerException("Nie podano danych do edycji");
         }
         User user = getUser(userId);
         user.setPassword(newPassword);
-        repository.save(user);
+        return repository.save(user);
     }
 
     public boolean deleteUserById(long userId) {
@@ -55,13 +55,13 @@ public class UserService {
         return true;
     }
 
-    void addDelegation(long userId, Delegation delegation) {
+    User addDelegation(long userId, Delegation delegation) {
         User user = getUser(userId);
         if (user.getDelegations() == null) {
             user.setDelegations(new ArrayList<>());
         }
         user.getDelegations().add(delegation);
-        repository.save(user);
+        return repository.save(user);
     }
 
     void removeDelegation(long userId, Delegation delegation) {

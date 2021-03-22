@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import psslab.pss.model.Delegation;
+import psslab.pss.model.User;
 import psslab.pss.repository.DelegationRepository;
 
 import java.util.Comparator;
@@ -31,13 +32,13 @@ public class DelegationService {
         }
     }
 
-    public void addDelegation(long userId, Delegation delegation) {
+    public User addDelegation(long userId, Delegation delegation) {
         if (delegation != null && delegation.valid()) {
             delegation = repository.save(delegation);
         } else {
             throw new NullPointerException("Nie podano danych o użytkowniku");
         }
-        userService.addDelegation(userId, delegation);
+        return userService.addDelegation(userId, delegation);
     }
 
     public boolean removeDelegation(long userId, long delegationId) {

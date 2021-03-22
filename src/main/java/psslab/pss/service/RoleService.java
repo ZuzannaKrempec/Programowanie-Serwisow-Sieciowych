@@ -23,10 +23,7 @@ public class RoleService {
     }
 
     private void init() {
-        Role role = new Role();
-        role.setRoleId(1L);
-        role.setRoleName("test");
-        role.setUsers(new ArrayList<>());
+        Role role = new Role("test");
         role = repository.save(role);
         System.out.println(role.getRoleId() +" " + role.getRoleName() + " " + role.getUsers().size());
     }
